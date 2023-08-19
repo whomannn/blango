@@ -4,6 +4,8 @@ from django.utils import timezone
 from blog.models import Post
 from django.shortcuts import redirect
 from blog.forms import CommentForm
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_headers
 import logging
 # def index(request):
 #     return render(request, "blog/index.html")
@@ -41,3 +43,4 @@ def post_detail(request, slug):
   return render(
       request, "blog/post-detail.html", {"post": post, "comment_form": comment_form}
   )
+
