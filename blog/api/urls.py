@@ -13,6 +13,11 @@ router.register("tags", TagViewSet)
 router.register("posts", PostViewSet)
 urlpatterns = [
     path("users/<str:email>", UserDetail.as_view(), name="api_user_detail"),
+    path(
+        "posts/by-time/<str:period_name>/",
+        PostViewSet.as_view({"get": "list"}),
+        name="posts-by-time",
+    ),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
