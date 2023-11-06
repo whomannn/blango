@@ -5,9 +5,11 @@ from django.contrib.contenttypes.fields import GenericRelation
 # Create your models here.
 class Tag(models.Model):
     value = models.TextField(max_length=100, unique=True)
-
+    class Meta:
+      ordering = ["value"]
     def __str__(self):
         return self.value
+    
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
