@@ -41,13 +41,14 @@ class Dev(Configuration):
       'django.contrib.messages',
       'django.contrib.staticfiles',
       'blog',
+      'versatileimagefield',
       "crispy_forms",
       "crispy_bootstrap5",
       "debug_toolbar",
       "rest_framework",
       "rest_framework.authtoken",
       'drf_yasg',
-      'django_filters'
+      'django_filters',
   ]
 
   MIDDLEWARE = [
@@ -226,3 +227,5 @@ class Dev(Configuration):
             "Basic": {"type": "basic"},
         }
   }
+  MEDIA_ROOT = BASE_DIR / "media"
+  MEDIA_URL = "/media/"

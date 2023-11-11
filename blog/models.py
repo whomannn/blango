@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
-
+from versatileimagefield.fields import VersatileImageField, PPOIField                                                                                       
 # Create your models here.
 class Tag(models.Model):
     value = models.TextField(max_length=100, unique=True)
@@ -22,6 +22,10 @@ class Post(models.Model):
     content = models.TextField()
     tags = models.ManyToManyField(Tag, related_name="posts")
     comments = GenericRelation('Comment')
+    hero_image = VersatileImageField(
+        upload_to="hero_images", ppoi_field="ppoi", null=True, blank=True
+    )
+    ppoi = PPOIField(null=True, blank=True)
 
     def __str__(self):
         return self.title
